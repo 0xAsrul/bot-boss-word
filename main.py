@@ -24,6 +24,9 @@ OUTPUT_PATH = "/output/entry.txt"
 
 
 def main() -> None:
+    # Guard: the entry must be a single word within the 1-20 char gate.
+    assert WORD.isalpha() and " " not in WORD, "entry must be a single word"
+    assert 1 <= len(WORD) <= 20, "entry must be 1-20 characters"
     directory = os.path.dirname(OUTPUT_PATH)
     if directory:
         os.makedirs(directory, exist_ok=True)
